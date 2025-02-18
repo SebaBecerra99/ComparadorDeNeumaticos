@@ -2,6 +2,10 @@ function calcularDiametro(ancho, perfil, aro) {
     return (2 * (ancho * (perfil / 100))) + (aro * 25.4);
 }
 
+function calcularPorcentajeDiferencia(diametroOriginal, nuevoDiametro) {
+    return Math.abs((nuevoDiametro - diametroOriginal) / diametroOriginal) * 100;
+}
+
 function generarSugerencias(ancho, perfil, aro) {
     let diametroOriginal = calcularDiametro(ancho, perfil, aro);
     let sugerencia1 = null;
@@ -11,7 +15,7 @@ function generarSugerencias(ancho, perfil, aro) {
         let nuevoAncho = ancho + ajuste;
         let nuevoPerfil = perfil + ajuste;
         let nuevoDiametro = calcularDiametro(nuevoAncho, perfil, aro);
-        let porcentajeDiferencia = Math.abs((nuevoDiametro - diametroOriginal) / diametroOriginal) * 100;
+        let porcentajeDiferencia = calcularPorcentajeDiferencia(diametroOriginal, nuevoDiametro);
         
         if (porcentajeDiferencia <= 3.1) {
             if (!sugerencia1) {
@@ -23,7 +27,7 @@ function generarSugerencias(ancho, perfil, aro) {
         }
         
         nuevoDiametro = calcularDiametro(ancho, nuevoPerfil, aro);
-        porcentajeDiferencia = Math.abs((nuevoDiametro - diametroOriginal) / diametroOriginal) * 100;
+        porcentajeDiferencia = calcularPorcentajeDiferencia(diametroOriginal, nuevoDiametro);
         
         if (porcentajeDiferencia <= 3.1) {
             if (!sugerencia1) {
@@ -59,10 +63,8 @@ function compararNeumaticos() {
     let diferencia = Math.abs(diametro1 - diametro2);
     let porcentajeDiferencia = (diferencia / diametro1) * 100;
     
-    let resultadon1 = document.getElementById("resultadon1");
-    resultadon1.innerHTML=`El diametro total del neumático 1 es: ${diametro1}mm`;
-    let resultadon2 = document.getElementById("resultadon2");
-    resultadon2.innerHTML=`El diametro total del neumático 2 es: ${diametro2}mm`;
+    document.getElementById("resultadon1").innerHTML = `El diametro total del neumático 1 es: ${diametro1}mm`;
+    document.getElementById("resultadon2").innerHTML = `El diametro total del neumático 2 es: ${diametro2}mm`;
 
     let resultado = document.getElementById("resultado");
     if (porcentajeDiferencia <= 3) {
