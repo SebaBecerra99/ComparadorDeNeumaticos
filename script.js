@@ -7,7 +7,7 @@ function generarSugerencias(ancho, perfil, aro) {
     let sugerencia1 = null;
     let sugerencia2 = null;
 
-    for (let ajuste of [5, -5, 10, -10]) {
+    for (let ajuste of [10, -10]) {
         let nuevoAncho = ancho + ajuste;
         let nuevoPerfil = perfil + ajuste;
         let nuevoDiametro = calcularDiametro(nuevoAncho, perfil, aro);
@@ -59,6 +59,11 @@ function compararNeumaticos() {
     let diferencia = Math.abs(diametro1 - diametro2);
     let porcentajeDiferencia = (diferencia / diametro1) * 100;
     
+    let resultadon1 = document.getElementById("resultadon1");
+    resultadon1.innerHTML=`El diametro total del neumático 1 es: ${diametro1}mm`;
+    let resultadon2 = document.getElementById("resultadon2");
+    resultadon2.innerHTML=`El diametro total del neumático 2 es: ${diametro2}mm`;
+
     let resultado = document.getElementById("resultado");
     if (porcentajeDiferencia <= 3) {
         resultado.innerHTML = `Los neumáticos son compatibles. Diferencia: ${porcentajeDiferencia.toFixed(2)}%`;
