@@ -63,3 +63,22 @@ h4 {
     color: #ff0000;
     font-size: 1.2rem;
 }
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px; /* Reducir el margen superior */
+}
+
+.logo {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(110, 110, 110, 0.5);
+    padding: 3px; /* Reducir el padding */
+    border-radius: 6px; /* Menor radio de borde */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Menos sombra */
+    max-width: 150px; /* Reducir el tamaño máximo */
+    height: auto;
+}
+
