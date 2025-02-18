@@ -67,7 +67,7 @@ function compararNeumaticos() {
     document.getElementById("resultadon2").innerHTML = `El diametro total del neumático 2 es: ${diametro2}mm`;
 
     let resultado = document.getElementById("resultado");
-    if (porcentajeDiferencia <= 3) {
+    if (porcentajeDiferencia <= 3.1) {
         resultado.innerHTML = `Los neumáticos son compatibles. Diferencia: ${porcentajeDiferencia.toFixed(2)}%`;
         resultado.style.color = "green";
     } else {
