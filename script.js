@@ -43,6 +43,23 @@ function generarSugerencias(ancho, perfil, aro) {
     document.getElementById("sugerencia2").innerText = sugerencia2 ? `Opción 2: ${sugerencia2}` : "";
 }
 
+function validarValores(ancho, perfil, aro) {
+    // Verificar si los valores son numéricos y mayores que 0
+    if (isNaN(ancho) || isNaN(perfil) || isNaN(aro)) {
+        return false;
+    }
+    if (ancho <= 0 || perfil <= 0 || aro <= 0) {
+        return false;
+    }
+
+    // Verificar que el ancho sea múltiplo de 10 y el perfil múltiplo de 5
+    if (perfil % 5 !== 0) {
+        return false;
+    }
+
+    return true;
+}
+
 function compararNeumaticos() {
     let ancho1 = parseFloat(document.getElementById("ancho1").value);
     let perfil1 = parseFloat(document.getElementById("perfil1").value);
@@ -52,8 +69,9 @@ function compararNeumaticos() {
     let perfil2 = parseFloat(document.getElementById("perfil2").value);
     let aro2 = parseFloat(document.getElementById("aro2").value);
     
-    if (isNaN(ancho1) || isNaN(perfil1) || isNaN(aro1) || isNaN(ancho2) || isNaN(perfil2) || isNaN(aro2)) {
-        alert("Por favor, ingrese valores válidos en todos los campos.");
+    // Validación de valores
+    if (!validarValores(ancho1, perfil1, aro1) || !validarValores(ancho2, perfil2, aro2)) {
+        alert("Por favor, ingrese valores válidos en todos los campos (el perfil debe ser múltiplo de 5).");
         return;
     }
 
